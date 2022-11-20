@@ -31,12 +31,14 @@
             }
             echo "<li><a href =\"index.php?email=".$email."\" type=\"button\" class=\"btn btn-outline-success me-2 border border-3 border-dark\" style=\"background-color: #00E676; border-radius: 25px;\">Trang Chủ</a></li>"
           ?>
-          <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Trò Chơi</a></li>
-          <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Ứng Dụng</a></li>
+          <!-- <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Trò Chơi</a></li>
+          <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Ứng Dụng</a></li> -->
         </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="index.php">
-          <input type="search" class="form-control form-control-light text-bg-light border border-3 border-dark" placeholder="Search..." aria-label="Search">
+        <?php
+          echo "<form class=\"col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3\" method=\"post\" action=\"search.php?email=".$email."&method=search\">";
+        ?>
+        
+          <input type="search" class="form-control form-control-light text-bg-light border border-3 border-dark" placeholder="Search..." aria-label="Search" name="search">
         </form>
 
         
@@ -105,7 +107,8 @@
                   echo "</li>";
                   echo "<li class=\"d-flex align-items-center\">";
                   echo "<svg class=\"bi\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>";
-                  echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
+                  echo "<a class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" href = \"index_game.php?email=".$email."&btnid=".$n."&db=".$db."\">Information</a>";
+                  // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
                   // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"btnid\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
                   echo "</li>";
                   echo "</ul>";
@@ -143,7 +146,8 @@
               echo "</li>";
               echo "<li class=\"d-flex align-items-center\">";
               echo "<svg class=\"bi\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>";
-              echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
+              echo "<a class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" href = \"index_game.php?email=".$email."&btnid=".$n."&db=".$db."\">Information</a>";
+              // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
               // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
               echo "</li>";
               echo "</ul>";
@@ -212,7 +216,8 @@
                   echo "</li>";
                   echo "<li class=\"d-flex align-items-center\">";
                   echo "<svg class=\"bi\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>";
-                  echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
+                  echo "<a class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" href = \"index_game.php?email=".$email."&btnid=".$n."&db=".$db."\">Information</a>";
+                  // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
                   // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
                   echo "</li>";
                   echo "</ul>";
@@ -250,7 +255,8 @@
               echo "</li>";
               echo "<li class=\"d-flex align-items-center\">";
               echo "<svg class=\"bi\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>";
-              echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
+              echo "<a class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" href = \"index_game.php?email=".$email."&btnid=".$n."&db=".$db."\">Information</a>";
+              // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
               // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
               echo "</li>";
               echo "</ul>";
@@ -316,7 +322,8 @@
                   echo "</li>";
                   echo "<li class=\"d-flex align-items-center\">";
                   echo "<svg class=\"bi\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>";
-                  echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
+                  echo "<a class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" href = \"index_game.php?email=".$email."&btnid=".$n."&db=".$db."\">Information</a>";
+                  // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
                   // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
                   echo "</li>";
                   echo "</ul>";
@@ -354,7 +361,8 @@
               echo "</li>";
               echo "<li class=\"d-flex align-items-center\">";
               echo "<svg class=\"bi\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>";
-              echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
+              echo "<a class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" href = \"index_game.php?email=".$email."&btnid=".$n."&db=".$db."\">Information</a>";
+              // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input type=\"hidden\" name=\"db\" value=\"".$db."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
               // echo "<form class=\"align-items-center justify-content-center\" method=\"post\" action=\"index_game.php?email=".$email."\"> <input type=\"hidden\" name=\"btnid\" value=\"".$n."\"></input> <input class=\"w-100 btn btn-lg btn-info mt-5 mb-5\" type=\"submit\" value=\"Information\"></input> </form>";
               echo "</li>";
               echo "</ul>";

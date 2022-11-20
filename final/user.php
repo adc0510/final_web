@@ -27,12 +27,14 @@
             }
             echo "<li><a href =\"index.php?email=".$email."\" type=\"button\" class=\"btn btn-outline-success me-2 border border-3 border-dark\" style=\"background-color: #00E676; border-radius: 25px;\">Trang Chủ</a></li>"
           ?>
-          <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Trò Chơi</a></li>
-          <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Ứng Dụng</a></li>
+          <!-- <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Trò Chơi</a></li>
+          <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Ứng Dụng</a></li> -->
         </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-light text-bg-light border border-3 border-dark" placeholder="Search..." aria-label="Search">
+        <?php
+          echo "<form class=\"col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3\" method=\"post\" action=\"search.php?email=".$email."&method=search\">";
+        ?>
+        
+          <input type="search" class="form-control form-control-light text-bg-light border border-3 border-dark" placeholder="Search..." aria-label="Search" name="search">
         </form>
         
         <?php
@@ -88,8 +90,8 @@
   </header>
 
   <div class="p-2 m-2 border border-5 border-warning bg-dark text-dark" style="border-radius: 25px; height: 320px;">
-        <div class="p-2 m-2 border border-5 border-warning bg-light justify-content-center align-items-center" style="border-radius: 25px; height: 280px;">
-          <div class="d-flex justify-content-center align-items-center" style="height: 100%">
+        <div class="p-2 m-2 border border-5 border-warning bg-primary justify-content-center align-items-center" style="border-radius: 25px; height: 280px;">
+          <div class="d-flex justify-content-center align-items-center " style="height: 100%">
             <div class="align-items-center justify-content-center" style="width: 70%;">
                 <?php
                     echo "<h1 class=\"d-flex align-items-center justify-content-center m-5\">".$email."</h1>";
@@ -117,8 +119,8 @@
           <div class="container justify-content-center align-items-center m-2" style="width: 100%;">
 
             <div class="p-2 m-2 border border-5 border-warning bg-dark text-dark" style="border-radius: 25px; width: 100%">
-                <div class="p-2 m-2 border border-5 border-warning bg-light justify-content-center align-items-center" style="border-radius: 25px; ">
-                    <div class="container justify-content-center align-items-center">
+                <div class="p-2 m-2 border border-5 border-warning bg-danger justify-content-center align-items-center " style="border-radius: 25px; ">
+                    <div class="container justify-content-center align-items-center bg-">
                         <h1>Favourite Game</h1>
                         <?php
                             $fv_game = $index_row["fv_game"];
@@ -144,7 +146,7 @@
             </div>
 
             <div class="p-2 m-2 border border-5 border-warning bg-dark text-dark" style="border-radius: 25px; width: 100%">
-                <div class="p-2 m-2 border border-5 border-warning bg-light justify-content-center align-items-center" style="border-radius: 25px; ">
+                <div class="p-2 m-2 border border-5 border-warning bg-success justify-content-center align-items-center" style="border-radius: 25px; ">
                     <div class="container justify-content-center align-items-center">
                         <h1>Download Game</h1>
                         <?php
