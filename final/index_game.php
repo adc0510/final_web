@@ -131,7 +131,7 @@
               $cmts = explode('/n',$comment);
               array_pop($cmts);
               foreach($cmts as $cmt){
-                $lst_cmt = explode(' ',$cmt);
+                $lst_cmt = explode('_',$cmt);
                 echo "<h4>".$lst_cmt[0]." :</h4>";
                 echo "<br>";
                 echo "<p>".$lst_cmt[1]."</p>";
@@ -149,7 +149,6 @@
           <button class="px-2 border border-5 border-warning" style="border-radius: 15px;" type="submit"> <h4>Send</h4> </button>
         </form>
         <?php
-
           if(isset($_POST['cmt'])){
             $cmt = $_POST['cmt'];
             $cur_cmt = $conn->query("SELECT * FROM $tb[$db] WHERE id='$id'");
@@ -157,7 +156,7 @@
             foreach($cur_cmt as $row){
               $cur = $cur.$row['comment'];
             }
-            $str = $cur."".$email." ".$cmt."/n";
+            $str = $cur."".$email."_".$cmt."/n";
             $sql = "UPDATE $tb[$db] SET comment='$str' WHERE id='$id'";
             $conn->query($sql);
             header("refresh:0");
