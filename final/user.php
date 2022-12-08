@@ -118,6 +118,14 @@
         <div class="d-flex p-2 m-2 border border-5 border-warning bg-light justify-content-center align-items-center" style="border-radius: 25px; width: 99.1%; ">
           <div class="container justify-content-center align-items-center m-2" style="width: 100%;">
 
+          <div class="p-2 m-2 border border-5 border-warning bg-dark text-dark" style="border-radius: 25px; width: 100%">
+                <div class="p-2 m-2 border border-5 border-warning bg-info justify-content-center align-items-center " style="border-radius: 25px; ">
+                    <div class="container justify-content-center align-items-center bg-">
+                        <h1 onclick="adminRedirect()">Admin Management</h1>
+                    </div>
+                </div>
+            </div>
+
             <div class="p-2 m-2 border border-5 border-warning bg-dark text-dark" style="border-radius: 25px; width: 100%">
                 <div class="p-2 m-2 border border-5 border-warning bg-danger justify-content-center align-items-center " style="border-radius: 25px; ">
                     <div class="container justify-content-center align-items-center bg-">
@@ -188,5 +196,11 @@
       <span class="mb-3 mb-md-3 me-5 text-muted">Trần Việt Thắng - 52000715</span>
     </ul>
   </footer>
+
+  <script>
+    function adminRedirect(){
+      window.location.href= "admin.php";
+    }
+  </script>
 </body>
 </html>
