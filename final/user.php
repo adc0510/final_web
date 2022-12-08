@@ -199,7 +199,7 @@
 
   <script>
     function adminRedirect(){
-      window.location.href= "admin.php";
+      window.location.href= "admin_management.php";
     }
   </script>
 </body>
