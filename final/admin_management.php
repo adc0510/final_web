@@ -14,12 +14,12 @@
 
 <body>
   <style>
-  .navbox{
-    margin-top: 15px;
-    align-self: center;
-    background-color: purple;
-    border-radius: 5px;
-  }
+    .navbox {
+      margin-top: 15px;
+      align-self: center;
+      background-color: purple;
+      border-radius: 5px;
+    }
   </style>
 
 
@@ -28,12 +28,14 @@
   ?>
   <?php
   $dt = $conn->query("SELECT * FROM game where status = 0");
+  $lstid = array();
   $lstname = array();
   $lstimg = array();
   $lstdes = array();
   $lstinfo = array();
 
   foreach ($dt as $row) {
+    array_push($lstid, $row["id"]);
     array_push($lstname, $row["name"]);
     array_push($lstimg, $row["img"]);
     array_push($lstdes, $row["des"]);
@@ -46,9 +48,15 @@
     <div class="row">
       <div class="col-lg-2">
         <div class="navbox">
-          <a href="admin_management" style="color: white;">Game list</a><br>
-          <a href="admin_management" style="color: white;">Game list</a><br>
-          <a href="admin_management" style="color: white;">Game list</a><br>
+          <div class="col-lg-12">
+            <a href="admin_management.php" style="color: white;">Game list</a>
+          </div>
+          <div class="col-lg-12">
+            <a href="#" style="color: white;">Ban list</a>
+          </div>
+          <div class="col-lg-12">
+            <a href="admin_management.php" style="color: white;">Game list</a>
+          </div>
         </div>
 
       </div>
@@ -75,16 +83,21 @@
             }
           ?>
             <tr>
+              <form method="POST">
               <td><?php echo "<h3 class=\"pt-2 mt-2 mb-4 display-7 lh-1 fw-bold\">" . $lstname[$n] . "</h3>"; ?></td>
               <td><?php echo "<img src=\"" . $lstimg[$n] . "\" class=\"rounded d-block\" style=\"width: 50px; height: 50px;\">"; ?></td>
               <td><?php echo "<p>" . $lstdes[$n] . "<img src=\"game_img/star.png\" style=\"width: 30px; height: 30px;\"></p>"; ?></td>
               <td>
-                <select>
-                  <option>Approve</option>
-                  <option>Deny</option>
+                <select id="<?php echo $lstid[$n] ?>">
+                  <option value="1">Approve</option>
+                  <option value="0">Deny</option>
                 </select>
               </td>
-              <td><button class="btn btn-success">Confirm</button></td>
+              <td><input type="submit" class="btn btn-success" value="Confirm"/></td>
+              </form>
+              <?php
+                
+              ?>
             </tr>
           <?php
             $n += 1;
@@ -110,6 +123,30 @@
       <span class="mb-3 mb-md-3 me-5 text-muted">Trần Việt Thắng - 52000715</span>
     </ul>
   </footer>
+
+  <script>
+    function ConfirmBtn(id) {
+      var status = document.getElementById(id).value;
+      var gameid = id;
+      
+      const xmlhttp = new XMLHttpRequest();
+        objXMLHttpRequest.onreadystatechange = function () {
+            if (objXMLHttpRequest.readyState === 4) {
+                if (objXMLHttpRequest.status == 200) {
+                    resolve(objXMLHttpRequest.responseText);
+                } else {
+                    reject('Error Code: ' +  objXMLHttpRequest.status + ' Error Message: ' + objXMLHttpRequest.statusText);
+                }
+            }
+        }
+
+      
+
+      xmlhttp.open("GET", "change_game_status.php?id=" + gameid + "&status=" + status, true);
+
+      xmlhttp.send();
+    }
+  </script>
 </body>
 
 </html>
