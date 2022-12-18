@@ -13,21 +13,21 @@
 </head>
 
 <body>
-  <style>
+
+<style>
     .navbox {
-      margin-top: 15px;
+      margin-top: 10px;
       align-self: center;
       background-color: purple;
       border-radius: 5px;
     }
   </style>
 
-
   <?php
   require_once("conn_game.php");
   ?>
   <?php
-  $dt = $conn->query("SELECT * FROM game where status = 0");
+  $dt = $conn->query("SELECT * FROM moba_game WHERE status = 0");
   $lstid = array();
   $lstname = array();
   $lstimg = array();
@@ -42,38 +42,61 @@
     array_push($lstinfo, $row["info"]);
   }
   ?>
-  <header class="py-4 bg-dark"></header>
+  <header class="py-4 bg-dark">
+  <div class="container p-3" style="background-image: url(index_img/head_bg.gif); border-radius: 25px;">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <img src="index_img/logo.png" alt="" style="width: 80px; border-radius: 25px;">
+        <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-black text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <?php
+            $email = "";
+            if(isset($_GET['email'])){
+              $email = $_GET['email'];
+            }
+            echo "<li><a href =\"index.php?email=".$email."\" type=\"button\" class=\"btn btn-outline-success me-2 border border-3 border-dark\" style=\"background-color: #00E676; border-radius: 25px;\">Trang Chủ</a></li>"
+          ?>
+          <!-- <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Trò Chơi</a></li>
+          <li><a href="#" type="button" class="btn btn-outline-success me-2 border border-3 border-dark" style="background-color: #00E676; border-radius: 25px">Ứng Dụng</a></li> -->
+        </ul>
+        <?php
+          echo "<form class=\"col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3\" method=\"post\" action=\"search.php?email=".$email."&method=search\">";
+        ?>
+        
+          <input type="search" class="form-control form-control-light text-bg-light border border-3 border-dark" placeholder="Search..." aria-label="Search" name="search">
+        </form>
+      </div>
+    </div>
+
+  </header>
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-2">
-        <div class="navbox">
-          <div class="col-lg-12">
-            <a href="admin_management.php" style="color: white;">Game list</a>
-          </div>
-          <div class="col-lg-12">
-            <a href="#" style="color: white;">Ban list</a>
-          </div>
-          <div class="col-lg-12">
-            <a href="admin_management.php" style="color: white;">Game list</a>
-          </div>
+      <div class="col-lg-2" style="padding-top:10px;">
+        <div class="card card-cover h-100 overflow-hidden text-bg-light rounded-5 border border-5 border-dark shadow-lg">
+            <a href="admin_management.php"><h5 class="pt-2 mt-2 mb-4 display-7 lh-1 fw-bold">Danh sách phê duyệt</h5></a>
+            <a href="admin_management.php"><h5 class="pt-2 mt-2 mb-4 display-7 lh-1 fw-bold">Danh sách từ chối</h5></a>
+            <a href="admin_management.php"><h5 class="pt-2 mt-2 mb-4 display-7 lh-1 fw-bold">Quản lý tài khoản</h5></a>
         </div>
-
       </div>
-      <div class="col-lg-10">
+
+      <div class="col-lg-10" style="padding-top:10px;">
+         <div class="card card-cover h-100 overflow-hidden text-bg-light rounded-5 border border-5 border-dark shadow-lg">
         <?php
         $db = 0;
         $n = 0;
         $_SESSION['img'] = $lstimg;
         $_SESSION['name'] = $lstname;
-        $_SESSION['des'] = $lstdes;
+        $_SESSION['info'] = $lstinfo;
         ?>
         <table class="table">
           <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>des</th>
-            <th>Qualification</th>
+            <th style="font-size: 30px;">Tên</th>
+            <th style="font-size: 30px;">Hình ảnh</th>
+            <th style="font-size: 30px;">Ghi chú</th>
+            <th style="font-size: 30px;">Phê duyệt</th>
             <th></th>
           </tr>
           <?php
@@ -86,11 +109,11 @@
               <form method="POST">
               <td><?php echo "<h3 class=\"pt-2 mt-2 mb-4 display-7 lh-1 fw-bold\">" . $lstname[$n] . "</h3>"; ?></td>
               <td><?php echo "<img src=\"" . $lstimg[$n] . "\" class=\"rounded d-block\" style=\"width: 50px; height: 50px;\">"; ?></td>
-              <td><?php echo "<p>" . $lstdes[$n] . "<img src=\"game_img/star.png\" style=\"width: 30px; height: 30px;\"></p>"; ?></td>
+              <td><?php echo "<h3 class=\"pt-2 mt-2 mb-4 display-7 lh-1 fw-bold\">" . $lstinfo[$n] . "</h3>"; ?></td>
               <td>
-                <select id="<?php echo $lstid[$n] ?>">
-                  <option value="1">Approve</option>
-                  <option value="0">Deny</option>
+                <select class="form-select" id="<?php echo $lstid[$n] ?>" name="<?php echo $lstid[$n] ?>">
+                  <option value="1">Duyệt</option>
+                  <option value="0">Không</option>
                 </select>
               </td>
               <td><input type="submit" class="btn btn-success" value="Confirm"/></td>
@@ -105,6 +128,7 @@
           ?>
         </table>
       </div>
+        </div>
     </div>
 
   </div>
